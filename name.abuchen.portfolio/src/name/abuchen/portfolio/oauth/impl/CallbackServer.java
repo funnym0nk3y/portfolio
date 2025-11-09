@@ -70,7 +70,7 @@ public class CallbackServer
             }
             catch (Exception e)
             {
-                e.printStackTrace();
+                PortfolioLog.error(e);
                 return "<html><body>" + Messages.LabelLoginSuccessful + "</body></html>"; //$NON-NLS-1$ //$NON-NLS-2$
             }
         }
