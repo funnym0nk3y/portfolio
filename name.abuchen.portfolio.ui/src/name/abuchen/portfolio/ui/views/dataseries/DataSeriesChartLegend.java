@@ -374,12 +374,12 @@ public class DataSeriesChartLegend extends Composite implements ISelectionProvid
 
                 sorting.add(new SimpleAction(Messages.ChartSortAZ, a -> {
                     Collections.sort(configurator.getSelectedDataSeries(),
-                                    (r, l) -> r.getLabel().compareTo(l.getLabel()));
+                                    (r, l) -> r.getLabel().compareToIgnoreCase(l.getLabel()));
                     configurator.fireUpdate();
                 }));
                 sorting.add(new SimpleAction(Messages.ChartSortZA, a -> {
                     Collections.sort(configurator.getSelectedDataSeries(),
-                                    (r, l) -> l.getLabel().compareTo(r.getLabel()));
+                                    (r, l) -> l.getLabel().compareToIgnoreCase(r.getLabel()));
                     configurator.fireUpdate();
                 }));
             }

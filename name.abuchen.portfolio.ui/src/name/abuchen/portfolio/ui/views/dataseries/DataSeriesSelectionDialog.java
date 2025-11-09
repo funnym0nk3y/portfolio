@@ -338,7 +338,16 @@ public class DataSeriesSelectionDialog extends Dialog
         treeViewer.setContentProvider(new NodeContentProvider());
         treeViewer.addFilter(elementFilter);
         treeViewer.setInput(elements);
-        treeViewer.setComparator(new ViewerComparator());
+        treeViewer.setComparator(new ViewerComparator()
+        {
+            @Override
+            public int compare(Viewer viewer, Object e1, Object e2)
+            {
+                String label1 = ((Node) e1).label;
+                String label2 = ((Node) e2).label;
+                return label1.compareToIgnoreCase(label2);
+            }
+        });
 
         hookListener();
 
