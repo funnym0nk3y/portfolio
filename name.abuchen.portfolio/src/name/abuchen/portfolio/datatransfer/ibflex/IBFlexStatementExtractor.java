@@ -339,15 +339,17 @@ public class IBFlexStatementExtractor implements Extractor
                 accountTransaction.setNote(element.getAttribute("description"));
 
             // Add Trade-ID note if available
-            if (!element.getAttribute("tradeID").isEmpty() && !"N/A".equals(element.getAttribute("tradeID")))
+            var tradeID = element.getAttribute("tradeID");
+            if (!tradeID.isEmpty() && !"N/A".equals(tradeID))
             {
-                accountTransaction.setNote(concatenate("Trade-ID: " + element.getAttribute("tradeID"), accountTransaction.getNote(), " | "));
+                accountTransaction.setNote(concatenate("Trade-ID: " + tradeID, accountTransaction.getNote(), " | "));
             }
 
             // Add Transaction-ID note if available
-            if (!element.getAttribute("transactionID").isEmpty() && !"N/A".equals(element.getAttribute("transactionID")))
+            var transactionID = element.getAttribute("transactionID");
+            if (!transactionID.isEmpty() && !"N/A".equals(transactionID))
             {
-                accountTransaction.setNote(concatenate("Transaction-ID: " + element.getAttribute("transactionID"), accountTransaction.getNote(), " | "));
+                accountTransaction.setNote(concatenate("Transaction-ID: " + transactionID, accountTransaction.getNote(), " | "));
             }
 
             // Transactions without an account-id will not be imported.
@@ -649,15 +651,17 @@ public class IBFlexStatementExtractor implements Extractor
             accountTransaction.setNote(element.getAttribute("taxableDescription"));
 
             // Add Tax-Transaction-ID note if available
-            if (!element.getAttribute("taxableTransactionID").isEmpty() && !"N/A".equals(element.getAttribute("taxableTransactionID")))
+            var taxableTransactionID = element.getAttribute("taxableTransactionID");
+            if (!taxableTransactionID.isEmpty() && !"N/A".equals(taxableTransactionID))
             {
-                accountTransaction.setNote("Tax-Transaction-ID: " + element.getAttribute("taxableTransactionID") + " | " + accountTransaction.getNote());
+                accountTransaction.setNote("Tax-Transaction-ID: " + taxableTransactionID + " | " + accountTransaction.getNote());
             }
 
             // Add Transaction-ID note if available
-            if (!element.getAttribute("transactionID").isEmpty() && !"N/A".equals(element.getAttribute("transactionID")))
+            var transactionID = element.getAttribute("transactionID");
+            if (!transactionID.isEmpty() && !"N/A".equals(transactionID))
             {
-                accountTransaction.setNote("Transaction-ID: " + element.getAttribute("transactionID") + " | " + accountTransaction.getNote());
+                accountTransaction.setNote("Transaction-ID: " + transactionID + " | " + accountTransaction.getNote());
             }
 
             // Transactions without an account-id will not be imported.
@@ -772,18 +776,19 @@ public class IBFlexStatementExtractor implements Extractor
             StringBuilder note = new StringBuilder();
 
             // Add Trade-ID note if available
-            if (!element.getAttribute("tradeID").isEmpty() && !"N/A".equals(element.getAttribute("tradeID")))
+            var tradeID = element.getAttribute("tradeID");
+            if (!tradeID.isEmpty() && !"N/A".equals(tradeID))
             {
-                note.append("Trade-ID: ").append(element.getAttribute("tradeID"));
+                note.append("Trade-ID: ").append(tradeID);
             }
 
             // Add Transaction-ID note if available
-            if (!element.getAttribute("transactionID").isEmpty()
-                            && !"N/A".equals(element.getAttribute("transactionID")))
+            var transactionID = element.getAttribute("transactionID");
+            if (!transactionID.isEmpty() && !"N/A".equals(transactionID))
             {
                 if (note.length() > 0)
                     note.append(" | ");
-                note.append("Transaction-ID: ").append(element.getAttribute("transactionID"));
+                note.append("Transaction-ID: ").append(transactionID);
             }
 
             return note.length() > 0 ? note.toString() : null;
